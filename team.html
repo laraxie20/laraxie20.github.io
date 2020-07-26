@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <title>Soccer Info</title>
+    <meta name="description" content="Soccer Info">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/img/logo.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#273037">
+</head>
+<body>
+  <div class="navbar-fixed">
+    <nav class="teal grey darken-3" role="navigation">
+      <div class="nav-wrapper container">
+        <a href="./"  id="logo-container" class="brand-logo left">Soccer Info</a>
+        <a href="javascript:history.back()" class="sidenav-trigger">
+          <i class="material-icons">arrow_back</i>
+        </a>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container">
+    <div id="loader" class="center"></div>
+    <div id="teamDetail"></div>
+    <ul class="collapsible" id="squadDetail"></ul>
+  </div>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large pulse indigo darken-3" id="btnSave">
+    <i class="large material-icons">favorite</i>
+    </a>
+    <a class="btn-floating btn-large red darken-3" id="btnDelete">
+    <i class="large material-icons">delete</i>
+    </a>
+  </div>
+
+  <footer class="footer">© 2020 Soccer Info</footer>
+  
+  <script src="js/materialize.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/idb.js"></script>
+  <script src="js/db.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var collapse = document.querySelectorAll(".collapsible");
+      M.Collapsible.init(collapse);
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var id = Number(urlParams.get("id"));
+      getTeam(team_id+id);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+.sidenav .user-view .fullname, .sidenav .user-view .role {
+    display: block;
+}
+
+.sidenav .user-view .fullname {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.sidenav .user-view .role {
+    font-size: 12px;
+    line-height: 24px;
+    padding-bottom: 14px;
+    font-weight: 400;
+}
+
+.img-sidebar {
+    width: 100%;
+}
+
+.img-logo {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about p {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.footer{
+    height:50px;
+    line-height:50px;
+    background:#333;
+    color:#fff;
+    width:100%;
+    text-align: center;
+    font-size: 12px;
+}

@@ -1,15 +1,15 @@
-var dbPromised = idb.open('db_soccerinfo', 1, upgradeDb => {
-    var objectStore = upgradeDb.createObjectStore('myfavorite', {
+let dbPromised = idb.open('db_soccerinfo', 1, upgradeDb => {
+    let objectStore = upgradeDb.createObjectStore('myfavorite', {
         keyPath: 'id'
     });
     objectStore.createIndex('team', 'team', { unique: false });
 });
 
-function addFavorite(data) {
+const addFavorite = data => {
     dbPromised.then(db => {
-        var tx = db.transaction('myfavorite', 'readwrite');
-        var store = tx.objectStore('myfavorite');
-        var dataSave = {
+        let tx = db.transaction('myfavorite', 'readwrite');
+        let store = tx.objectStore('myfavorite');
+        let dataSave = {
             id: data.id,
             name: data.name,
             founded: data.founded,
@@ -20,7 +20,7 @@ function addFavorite(data) {
         return tx.complete;
     }).then(() => {
         console.log('Team favorit berhasil disimpan.');
-        var message = `${data.name} berhasil ditambahkan ke daftar team favoritmu`;
+        const message = `${data.name} berhasil ditambahkan ke daftar team favoritmu`;
 
         if (Notification.permission === 'granted') {
             M.toast({ html: message, classes: 'rounded' });
@@ -34,15 +34,15 @@ function addFavorite(data) {
     });
 }
 
-function deleteFavorite(data) {
+const deleteFavorite = data => {
     dbPromised.then(db => {
-        var tx = db.transaction('myfavorite', 'readwrite');
-        var store = tx.objectStore('myfavorite');
+        let tx = db.transaction('myfavorite', 'readwrite');
+        let store = tx.objectStore('myfavorite');
 
         store.delete(data.id);
         return tx.complete;
     }).then(() => {
-        var message = `${data.name} berhasil dihapus dari daftar team favoritmu`;
+        const message = `${data.name} berhasil dihapus dari daftar team favoritmu`;
         if (Notification.permission === 'granted') {
             M.toast({ html: message, classes: 'rounded' });
             showNotification(message);
@@ -54,12 +54,12 @@ function deleteFavorite(data) {
     });
 }
 
-function getFavData() {
+const getFavData = () => {
     return new Promise(function (resolve, reject) {
         dbPromised
             .then(db => {
-                var tx = db.transaction('myfavorite', "readonly");
-                var store = tx.objectStore('myfavorite');
+                let tx = db.transaction('myfavorite', "readonly");
+                let store = tx.objectStore('myfavorite');
                 return store.getAll();
             })
             .then(data => {
@@ -68,11 +68,11 @@ function getFavData() {
     });
 }
 
-function checkData(id) {
+const checkData = id => {
     return new Promise(function (resolve, reject) {
         dbPromised.then(db => {
-            var tx = db.transaction('myfavorite', "readonly");
-            var store = tx.objectStore('myfavorite');
+            let tx = db.transaction('myfavorite', "readonly");
+            let store = tx.objectStore('myfavorite');
             return store.get(id);
         })
             .then(data => {
@@ -82,7 +82,7 @@ function checkData(id) {
     });
 }
 
-function showNotification(body) {
+const showNotification = body => {
     const title = 'Favorite Team';
     const options = {
         'body': `${body}`,

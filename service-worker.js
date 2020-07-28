@@ -40,7 +40,8 @@ workbox.precaching.precacheAndRoute([
 	{ url: '/pages/list.html', revision: '1' },
 	{ url: '/pages/favorite.html', revision: '1' },
 	{ url: '/pages/about.html', revision: '1' },
-]);
+],	{ ignoreURLParametersMatching: [/.*/] }
+);
 
 workbox.routing.registerRoute(
 	/\/team.html/g,
